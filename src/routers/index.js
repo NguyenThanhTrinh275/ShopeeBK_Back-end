@@ -4,7 +4,8 @@ const path = require('path');
 
 const router = express.Router();
 
-// Đọc tất cả file trong thư mục routes (trừ index.js)
+//! copy chatgpt
+// Đọc tất cả file trong thư mục routes (trừ index.js) 
 fs.readdirSync(__dirname).forEach((file) => {
     if (file !== 'index.js' && file.endsWith('.js')) {
         const route = require(path.join(__dirname, file));

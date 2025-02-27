@@ -1,24 +1,21 @@
 const UserController = require("../controllers/UserController");
 const express = require("express");
 const router = express.Router(); 
-
-router.get("/", async (req, res) => {
-    const users = await UserController.getAllUsers(req, res);
-    res.json(users);
+const authenticateToken = require("../middlewares/authenticateToken")
+router.get("/", authenticateToken ,  async (req, res,next) => {
+    const users = await UserController.getAllUsers(req, res,next);
 });
 
-router.post("/", async (req, res) => {
-    const user = await UserController.createUser(req, res);
-    res.json(user);
+router.post("/", async (req, res,next) => {
+    const user = await UserController.createUser(req, res,next);
 });
 
-router.put("/:id", async (req, res) =>{
-    let id = req.params.id ; 
-    UserController.updateUser(id, req, res) ; 
-    console.log("Update Success!")
+router.put("/:id",authenticateToken , async (req, res,next) =>{
+    UserController.updateUser(req, res,next) ; 
+    console.log("Update Success User Id : " ,req.params.id)
 })
-router.delete("/:id", async (req, res) =>{
-    UserController.deleteUser(req,res) ; 
-    console.log("Delete Success!")
+router.delete("/:id",authenticateToken, async (req, res, next) =>{
+    UserController.deleteUser(req, res,next) ; 
+    console.log("Delete Success User Id : " ,req.params.id)
 })
 module.exports = router

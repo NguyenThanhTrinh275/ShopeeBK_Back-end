@@ -1,19 +1,41 @@
 const UserService = require("../services/user.service");
 
 class UserController {
-    async getAllUsers(req, res) {
-        const users = await UserService.getAllUsers();
-        res.json(users);
+    getAllUsers = async (req, res,next) =>{
+        try{
+            const users = await UserService.getAllUsers();
+            res.json(users).status(200);
+        }
+        catch(error){
+            next(error)
+        }
+
     }
-    async createUser(req, res) {
-        const user = await UserService.createUser(req.body);
-        res.json(user);
+    createUser = async (req, res,next) =>{
+        try { 
+            const user = await UserService.createUser(req.body)
+            res.json(user).status(200) ;  
+        } catch (error) {
+            next(error)
+        }            
+
     }
-    async updateUser(id,req, res){
-        res.json(UserService.updateUser(id,req, res)) ; 
+    updateUser  = async (req, res,next) =>{
+        try {
+            const user =  await UserService.updateUser(req) 
+            res.status(200).json(user)  
+        } catch (error) {
+            next(error) 
+        }
+
     }
-    async deleteUser(req, res){
-        res.json(UserService.deleteUser(req)) ; 
+    deleteUser =  async (req, res,next) =>{
+        try {
+            const user = await UserService.deleteUser(req) 
+            res.status(200).json(user) 
+        } catch (error) {
+            next(error)
+        }
     }
 }
 
