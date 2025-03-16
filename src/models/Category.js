@@ -1,30 +1,15 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database"); // Import kết nối DB
+const mongoose = require("mongoose");
 
-const Category = sequelize.define(
-    "Category",
-    {
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
-            primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        }
+const categorySchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
     },
-    {
-        timestamps: true,
-    }
-);
+    image : {
+        type : String
+    },
+})
+
+const Category = mongoose.model("Category" , categorySchema)
 
 module.exports = Category

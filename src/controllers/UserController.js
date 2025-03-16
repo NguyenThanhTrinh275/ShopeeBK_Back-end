@@ -9,7 +9,14 @@ class UserController {
         catch(error){
             next(error)
         }
-
+    }
+    getMyInfo = async (req, res,next) =>{
+        try {
+            const user = await UserService.findUser({_id : req.user._id}) ;
+            res.status(200).json(user)
+        } catch (error) {
+            next(error)
+        }
     }
     createUser = async (req, res,next) =>{
         try { 
@@ -18,7 +25,6 @@ class UserController {
         } catch (error) {
             next(error)
         }            
-
     }
     updateUser  = async (req, res,next) =>{
         try {
@@ -36,6 +42,18 @@ class UserController {
         } catch (error) {
             next(error)
         }
+    }
+    async findOrCreateUser (profile){
+        let user = await UserService.findUser({email : profile._json.email}) ;
+        if(!user){
+            user = await UserService.createUser({
+                fullname : profile.displayName , 
+                email : profile._json.email ,
+                type : 'google', 
+                type_id : profile.id 
+            })
+        }
+        return user ; 
     }
 }
 

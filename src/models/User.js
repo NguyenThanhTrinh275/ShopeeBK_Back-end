@@ -1,66 +1,46 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/database"); // Import kết nối DB
-const Product = require("./products");
+const mongoose = require("mongoose");
 
-const User = sequelize.define(
-  "User",
+const userSchema = new mongoose.Schema(
   {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      trim : true, 
-      primaryKey: true
-    },
     username: {
-      type: DataTypes.STRING,
+      type: String,
+      required: false,
       unique: true,
-      trim : true,
-      allowNull: false,
-      defaultValue : () => { return 'user' + Date.now().toLocaleString() + Math.floor(Math.random() * 1000) }
+      trim: true,
+      minlength: [3, "Username must be at least 3 characters long"],
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue : () => {
-        return getRandomString(8);
-      }
+    fullname : {
+        type : String
     },
     email: {
-      type: DataTypes.STRING,
+      type: String,
+      required: [true, "Email is required"],
       unique: true,
-      allowNull: false,
+      trim: true,
+      lowercase: true,
+      match: [/\S+@\S+\.\S+/, "Email is invalid"]
     },
-    fullname: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    password: {
+      type: String,
+      required: false,
+      minlength: [6, "Password must be at least 6 characters long"]
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    role: {
+      type: String,
+      enum: ["user", "admin", "seller"],
     },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    type: {
+      type: String,
+      enum: ["local", "google", "facebook"],
     },
-    image :{
-        type : DataTypes.STRING
-    },
-    from_where :{
-        type : DataTypes.STRING , 
-        enum : ['local' , 'google' , 'facebook']
-    }, 
-    role :{
-        type : DataTypes.STRING ,        
-        enum : ['user' , 'seller','admin'] , 
-        defaultValue : 'user', 
+    type_id: {
+      type: String,
     }
   },
-  {
-    tableName: "users", // Tên bảng trong DB
-    timestamps: true,   // Bật createdAt, updatedAt
-  }
+  { timestamps: true } // Tự động thêm createdAt & updatedAt
 );
-User.associations = () => {
-  User.hasMany(Product, { foreignKey: "user_id" });
-}
+
+// Tạo model từ schema
+const User = mongoose.model("User", userSchema);
+
 module.exports = User;

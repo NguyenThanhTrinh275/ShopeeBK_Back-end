@@ -14,11 +14,7 @@
     "nodemon": "^3.1.9",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
-    "sequelize": "^6.37.6"
-  },
-  "scripts": {
-    "start": "docker-compose up -d && nodemon app.js",
-    "stop": "docker-compose down",
-    "dev": "docker-compose up -d && nodemon app.js && docker-compose down"
+    "sequelize": "^6.37.6",
+    "winston": "^3.17.0"
   }
 }

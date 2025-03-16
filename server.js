@@ -1,18 +1,20 @@
 const express = require("express");
 const app = express();
+
 require("dotenv").config();
 require("./src/config/google.config");
-const mongoose = require("mongoose");
 const router = require("./src/routers");
-const errorHandler = require('./src/middlewares/errorHandler')
+const errorHandler = require('./src/exception/errorHandler')
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
-const sequelize = require("./src/config/database");
+const createAdminAccount = require("./src/util/createAdmin");
 
-let port = process.env.PORT || 5000 ; 
-let db = process.env.MONGODB_URI || "mongodb://localhost:27017/mydatabase";
-mongoose.connect(db);
+const mongoose = require("mongoose");
+const db = process.env.MONGO_URL ; 
+mongoose.connect(db).then(() => console.log("✅ Kết nối DB thành công!")).catch(err => console.log(err))
+
+let port = process.env.PORT || 3000 ; 
 
 app.use(session({
     secret: process.env.sessionKey,
@@ -20,12 +22,16 @@ app.use(session({
     saveUninitialized: false,
     cookie: { secure: false } // Để `true` nếu dùng HTTPS
   }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(cookieParser());
 app.use(express.json());
 app.use('/api' , router); 
-app.use(errorHandler);
+
+createAdminAccount(); // tạo tai khoan admin
+
+app.use(errorHandler); // them middleware xu ly loi
 
 app.listen(port,() => console.log(`Server is running in port ${port}`))

@@ -10,36 +10,37 @@ class UserService {
     }
     async createUser(user) {
         const { username, email, password } = user;
-        if(password)    user.password = await this.hashPass(password)
-        
-        //! copy chatgpt,
-        //  kiem tra xem email hoac username da ton tai chua, trong quá trình làm gặp lỗi null === null ->auto true nên mới copy
-        const conditions = [];
-        if (email) conditions.push({ email });
-        if (username) conditions.push({ username });
-        const existingUser = conditions.length > 0 
-            ? await User.findOne({ $or: conditions }) 
-            : null;
+        if(password) user.password = await this.hashPass(password)
 
+        const exist_name = await this.findUser( { username : username });
+        const exist_email = await this.findUser({ email : email });
 
-        if (existingUser) {
+        if (exist_email || exist_name) {
             throw new AppError(ErrorCodes.BAD_REQUEST, "User ton tai!")
         }
-        return await User.create(user) 
+        if(!user.role) user.role = "user"
+        if(!user.type) user.type = "local"
+
+        if(!user.username) user.username = 'user_' + Date.now().toString() + Math.floor(Math.random() * 1000)
+        return await User.create(user); 
     }
-    async updateUserById(req){
-        let id = req.params.id ; 
+    async updateUser(req){
+        let id = req.user._id ; 
         let updateData = req.body ; 
-        return await User.findByIdAndUpdate(id , updateData , {new : true , runValidators : true} ) ; 
+        const user = await User.findByIdAndUpdate(id, updateData) ;
+        if(!user){
+            throw new AppError(ErrorCodes.BAD_REQUEST, "User khong ton tai hoac UserId khong dung!")
+        }
+        return user ;
     }
 
     async deleteUser(req){
-        let id = req.params.id ;
-        const user = await User.findById(id) ;
+        let id = req.user._id ;
+        const user = await User.findByIdAndDelete(id) ;
         if(!user){
-            throw new AppError(ErrorCodes.BAD_REQUEST, "User ID khong ton tai!")
+            throw new AppError(ErrorCodes.BAD_REQUEST, "User khong ton tai hoac UserId khong dung!")
         }
-        return await User.findOneAndDelete(user)
+        return user ; 
     }
 
     async hashPass(password) {
@@ -47,7 +48,7 @@ class UserService {
         return pass ; 
     }
     async findUser(info){
-        return await User.findOne(info) ;
+        return await User.findOne(info);
     }
 }
 

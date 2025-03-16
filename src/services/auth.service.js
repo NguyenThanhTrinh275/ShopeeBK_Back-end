@@ -3,17 +3,22 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const AppError = require("../exception/AppError")
 const ErrorCodes = require("../exception/ErrorCodes")
-const userService = require("./user.service")
 const secretKey = process.env.secretKey
 const refreshSecretKey = process.env.refreshSecretKey
 class AuthenticationService{
 
-    async authenticate(req){
-        const user = await User.findOne({ username: req.body.username })
+    async authenticate(info){
+        const {phone , username , email} = info
+
+        let user = null 
+        if(phone) user = await User.findOne({phone : phone})
+        if(username) user = await User.findOne({username : username})
+        if(email) user = await User.findOne({email : email})
+
         if(!user){
             throw new AppError(ErrorCodes.BAD_REQUEST, "User khong ton tai!")
         }
-        const auth = await bcrypt.compare(req.body.password, user.password)
+        const auth =  await bcrypt.compare(info.password, user.password)
         if(!auth){
             throw new AppError(ErrorCodes.UNAUTHORIZED, "Mat khau khong dung!")
         }
@@ -22,8 +27,10 @@ class AuthenticationService{
     generateToken(user) {
         const accessToken = jwt.sign(
             {
+                _id : user.id , 
                 username : user.username ,
-                email : user.email
+                email : user.email, 
+                role : user.role
             },
             secretKey , 
             {
@@ -33,6 +40,7 @@ class AuthenticationService{
         )
         const refreshToken = jwt.sign(
             {
+                user_id : user.id ,
                 username : user.username ,
                 email : user.email
             },
@@ -49,19 +57,6 @@ class AuthenticationService{
         return accessToken 
     }
 
-    async findOrCreateUser (profile){
-        const user = await userService.findUser({email : profile._json.email}) ;
-        if(!user){
-            const user = await userService.createUser({
-                fullname : profile.displayName , 
-                email : profile._json.email ,
-                type : 'google', 
-                type_id : profile.id 
-            })
-        }
-        console.log(user)
-        return user ; 
-    }
 }
 
 

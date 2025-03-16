@@ -1,0 +1,136 @@
+
+[2025-03-16 19:08:44] [ERROR] POST /api/auth/login - Error: data and hash arguments required
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:208:17)
+    at D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at module.exports.promise (D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:204:25)
+    at AuthenticationService.authenticate (D:\ShopeeBK_Back-end\src\services\auth.service.js:22:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AuthController.login (D:\ShopeeBK_Back-end\src\controllers\AuthController.js:7:50)
+[2025-03-16 19:09:23] [ERROR] POST /api/auth/login - Error: data and hash arguments required
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:208:17)
+    at D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at module.exports.promise (D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:204:25)
+    at AuthenticationService.authenticate (D:\ShopeeBK_Back-end\src\services\auth.service.js:22:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AuthController.login (D:\ShopeeBK_Back-end\src\controllers\AuthController.js:7:50)
+[2025-03-16 19:09:24] [ERROR] POST /api/auth/login - Error: data and hash arguments required
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:208:17)
+    at D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at module.exports.promise (D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:204:25)
+    at AuthenticationService.authenticate (D:\ShopeeBK_Back-end\src\services\auth.service.js:22:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AuthController.login (D:\ShopeeBK_Back-end\src\controllers\AuthController.js:7:50)
+[2025-03-16 19:26:21] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'role')
+    at D:\ShopeeBK_Back-end\src\middlewares\checkRole.js:5:17
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:47:12)
+[2025-03-16 19:26:30] [ERROR] POST /api/auth/login - Error: data and hash arguments required
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:208:17)
+    at D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:29:12
+    at new Promise (<anonymous>)
+    at module.exports.promise (D:\ShopeeBK_Back-end\node_modules\bcrypt\promises.js:20:12)
+    at Object.compare (D:\ShopeeBK_Back-end\node_modules\bcrypt\bcrypt.js:204:25)
+    at AuthenticationService.authenticate (D:\ShopeeBK_Back-end\src\services\auth.service.js:21:36)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async AuthController.login (D:\ShopeeBK_Back-end\src\controllers\AuthController.js:7:50)
+[2025-03-16 19:27:22] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'role')
+    at D:\ShopeeBK_Back-end\src\middlewares\checkRole.js:5:17
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:346:12)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:280:10)
+    at Function.handle (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:175:3)
+    at router (D:\ShopeeBK_Back-end\node_modules\express\lib\router\index.js:47:12)
+[2025-03-16 19:33:42] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:9:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:35:44] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:9:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:38:01] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:9:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:38:12] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:9:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:38:47] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:10:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:39:04] [ERROR] POST /api/product/create - TypeError: Cannot read properties of undefined (reading 'toUpperCase')
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:10:43)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
+[2025-03-16 19:59:56] [ERROR] POST /api/product/create - TypeError: data.map is not a function
+    at ProductService.createProduct (D:\ShopeeBK_Back-end\src\services\product.service.js:9:39)
+    at ProductController.createProduct (D:\ShopeeBK_Back-end\src\controllers\ProductController.js:14:50)
+    at D:\ShopeeBK_Back-end\src\routers\product.router.js:12:45
+    at Layer.handle [as handle_request] (D:\ShopeeBK_Back-end\node_modules\express\lib\router\layer.js:95:5)
+    at next (D:\ShopeeBK_Back-end\node_modules\express\lib\router\route.js:149:13)
+    at D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:19:9
+    at D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:261:12
+    at getSecret (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:97:14)
+    at module.exports [as verify] (D:\ShopeeBK_Back-end\node_modules\jsonwebtoken\verify.js:101:10)
+    at authAccessToken (D:\ShopeeBK_Back-end\src\middlewares\authAccessToken.js:13:9)
